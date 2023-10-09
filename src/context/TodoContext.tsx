@@ -19,11 +19,11 @@ export interface ITodoContext {
   handleSearchQueryClear: () => void;
 };
 
-const TodoContext = createContext<ITodoContext | undefined>(undefined);
+const TodoContext = createContext<ITodoContext | null>(null);
 
 const useTodoContext = () => {
   const context = useContext(TodoContext);
-  if (context === undefined) {
+  if (context === null) {
     throw new Error('useTodoContext must be used within a TodoProvider');
   }
   return context;
