@@ -1,10 +1,10 @@
 import { Form } from 'react-bootstrap';
-import { useTodoContext, ITodoContext } from '../context/TodoContext';
+import { useTodoContext } from '../context/TodoContext';
 import Todo from './Todo';
 
 
 const TodoList = () => {
-  const { filteredTodos }: ITodoContext = useTodoContext();
+  const { filteredTodos } = useTodoContext();
 
   return (
     <>

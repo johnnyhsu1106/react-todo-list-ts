@@ -1,11 +1,11 @@
 import { FormEvent, useEffect, useRef } from 'react';
 import { Form, Button } from 'react-bootstrap';
-import { useTodoContext, ITodoContext } from '../context/TodoContext';
+import { useTodoContext } from '../context/TodoContext';
 
 
 const NewTodoForm = () => {
   const todoRef = useRef<HTMLInputElement>(null);
-  const { handleTodoAdd }: ITodoContext = useTodoContext();
+  const { handleTodoAdd } = useTodoContext();
 
   useEffect(() => {
     todoRef.current?.focus();

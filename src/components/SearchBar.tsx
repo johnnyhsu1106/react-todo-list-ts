@@ -1,5 +1,5 @@
 import { InputGroup, Form, Stack } from 'react-bootstrap';
-import { useTodoContext, ITodoContext } from '../context/TodoContext'
+import { useTodoContext } from '../context/TodoContext'
 import ControlButtons from './ControlButtons';
 
 const SearchBar = () => {
@@ -7,7 +7,7 @@ const SearchBar = () => {
     query,
     handleSearchQueryClear,
     hangleSearchQueryChange
-  } : ITodoContext= useTodoContext();
+  } = useTodoContext();
 
   return (
     <Stack 

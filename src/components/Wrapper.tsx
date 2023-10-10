@@ -1,7 +1,12 @@
 import { ReactNode } from 'react';
-import { Container } from 'react-bootstrap'
+import { Container } from 'react-bootstrap';
 
-const Wrapper  = ({ children } : { children: ReactNode}) => {
+interface WrapperProps {
+  children: ReactNode;
+};
+
+
+const Wrapper  = ({ children }: WrapperProps) => {
   return (
     <Container className='mt-5'>
       {children}

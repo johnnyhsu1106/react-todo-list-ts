@@ -1,11 +1,11 @@
 import { Button } from 'react-bootstrap';
-import { useTodoContext,  ITodoContext  } from '../context/TodoContext';
+import { useTodoContext } from '../context/TodoContext';
 
 const ControlButtons = () => {
   const {
     handleCompletedTodosDelete,
     handleAllTodosDelete
-  }: ITodoContext = useTodoContext();
+  } = useTodoContext();
   
   return (
     <>

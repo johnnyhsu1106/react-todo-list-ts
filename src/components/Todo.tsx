@@ -1,6 +1,6 @@
 import { Form, Button, FormCheck  } from 'react-bootstrap';
-import { useTodoContext, ITodoContext } from '../context/TodoContext';
-import { ITodo } from '../context/TodoContext';
+import { useTodoContext } from '../context/TodoContext';
+import { ITodo } from '../types/interfaces';
 
 interface TodoProps {
   filteredTodo: ITodo;
@@ -10,9 +10,9 @@ const Todo = ({ filteredTodo }: TodoProps) => {
   const {
     handleTodoToggle,
     handleTodoDelete
-  }: ITodoContext = useTodoContext();
+  } = useTodoContext();
 
-  const { id, title, isCompleted }: ITodo = filteredTodo;
+  const { id, title, isCompleted } = filteredTodo;
 
   return (
     <div className='d-flex align-items-center justify-content-between mb-2'>

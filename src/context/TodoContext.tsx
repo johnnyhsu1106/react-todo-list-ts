@@ -1,13 +1,8 @@
 import { createContext, useContext, useState, useMemo, ReactNode } from 'react'
 import { v4 as uuidv4 } from 'uuid';
+import { ITodo } from '../types/interfaces';
 
-export interface ITodo {
-  id: string,
-  title: string, 
-  isCompleted: boolean
-};
-
-export interface ITodoContext {
+interface ITodoContext {
   query: string
   filteredTodos: ITodo[];
   handleTodoAdd: (title: string) => void; 
@@ -34,19 +29,19 @@ const TodoProvider = ({ children } : { children: ReactNode}) => {
   const [todos, setTodos] = useState<ITodo[]>([]);
 
   const filteredTodos: ITodo[] = useMemo(() => {
-    return todos.filter((todo: ITodo) => {
+    return todos.filter((todo) => {
       return todo.title.toLowerCase().includes(query.toLowerCase());
     });
   }, [todos, query]);
 
   const handleTodoAdd = (title: string) => {
-    setTodos((prevTodos: ITodo[]) => {
+    setTodos((prevTodos) => {
       return [...prevTodos, {id: uuidv4(), title, isCompleted: false}];
     });
   };
 
   const handleTodoToggle = (id: string): void => {
-    setTodos((prevTodos: ITodo[]) => {
+    setTodos((prevTodos) => {
       return prevTodos.map((todo) => {
         return todo.id === id ? {...todo, isCompleted: !todo.isCompleted } : todo;
       });
@@ -54,7 +49,7 @@ const TodoProvider = ({ children } : { children: ReactNode}) => {
   };
 
   const handleTodoDelete = (id: string): void => {
-    setTodos((prevTodos: ITodo[]) => {
+    setTodos((prevTodos) => {
       return prevTodos.filter((todo) => { 
         return todo.id !== id;
       });
@@ -62,7 +57,7 @@ const TodoProvider = ({ children } : { children: ReactNode}) => {
   };
 
   const handleCompletedTodosDelete = (): void => {
-    setTodos((prevTodos: ITodo[]) => {
+    setTodos((prevTodos) => {
       return prevTodos.filter((todo) => {
         return !todo.isCompleted;
       }); 
@@ -82,7 +77,7 @@ const TodoProvider = ({ children } : { children: ReactNode}) => {
     setQuery('');
   };
 
-  const value: ITodoContext = {
+  const value = {
     query,
     filteredTodos,
     handleTodoAdd,
